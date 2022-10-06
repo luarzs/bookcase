@@ -1,19 +1,19 @@
-import 'package:bookcase/src/pages/home/item.tile.dart';
 import 'package:flutter/material.dart';
 import 'package:bookcase/src/config/app_data.dart' as app_data;
 
-class HomeTab extends StatefulWidget {
-  const HomeTab({Key? key}) : super(key: key);
+import '../home/item.tile.dart';
+
+class LibraryTab extends StatefulWidget {
+  const LibraryTab({Key? key}) : super(key: key);
 
   @override
-  State<HomeTab> createState() => _HomeTabState();
+  State<LibraryTab> createState() => _LibraryTabState();
 }
 
-class _HomeTabState extends State<HomeTab> {
+class _LibraryTabState extends State<LibraryTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //Grid
       body: Column(
         children: [
           Container(
@@ -22,19 +22,8 @@ class _HomeTabState extends State<HomeTab> {
             ),
             child: const Center(
               child: Text(
-                'Página Inicial',
+                'Biblioteca',
               ),
-            ),
-          ),
-          Container(
-            alignment: Alignment.centerLeft,
-            padding: const EdgeInsets.symmetric(
-              vertical: 15,
-              horizontal: 19,
-            ),
-            child: const Text(
-              'Livros em Destaque',
-              textAlign: TextAlign.start,
             ),
           ),
           Expanded(

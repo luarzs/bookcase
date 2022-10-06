@@ -1,5 +1,9 @@
+import 'package:bookcase/src/pages/auth/sign_in_screen.dart';
 import 'package:bookcase/src/pages/home/explorer_tab.dart';
 import 'package:bookcase/src/pages/home/home_tab.dart';
+import 'package:bookcase/src/pages/library/library_tab.dart';
+import 'package:bookcase/src/pages/plan/plan_tab.dart';
+import 'package:bookcase/src/pages/profile/profile_tab.dart';
 import 'package:flutter/material.dart';
 
 import '../../config/custom_colors.dart';
@@ -20,25 +24,41 @@ class _BaseScreenState extends State<BaseScreen> {
     return Scaffold(
       //App Bar
       appBar: AppBar(
-        title: const Text('Teste'),
         backgroundColor: Colors.white,
         elevation: 0,
         foregroundColor: CustomColor.customSwatchColor,
         centerTitle: true,
         actions: [
+          SizedBox(
+            width: 200,
+            child: Image.asset(
+              alignment: Alignment.center,
+              'assets/logos/bookcase.png',
+            ),
+          ),
           IconButton(
-              onPressed: () {}, icon: const Icon(Icons.exit_to_app_outlined))
+            onPressed: () {
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (c) {
+                    return const SignInScreen();
+                  },
+                ),
+              );
+            },
+            icon: const Icon(Icons.exit_to_app_outlined),
+          )
         ],
       ),
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: pageController,
-        children: [
-          const HomeTab(),
-          const ExplorerTab(),
-          Container(color: Colors.blue),
-          Container(color: Colors.yellow),
-          Container(color: Colors.green),
+        children: const [
+          HomeTab(),
+          ExplorerTab(),
+          PlanTab(),
+          LibraryTab(),
+          ProfileTab(),
         ],
       ),
 
@@ -47,10 +67,12 @@ class _BaseScreenState extends State<BaseScreen> {
         iconSize: 30,
         currentIndex: currentIndex,
         onTap: (index) {
-          setState(() {
-            currentIndex = index;
-            pageController.jumpToPage(index);
-          });
+          setState(
+            () {
+              currentIndex = index;
+              pageController.jumpToPage(index);
+            },
+          );
         },
         type: BottomNavigationBarType.fixed,
         selectedItemColor: const Color(0xFF22B14C),

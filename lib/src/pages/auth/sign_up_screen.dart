@@ -18,10 +18,16 @@ class SignUpScreen extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  const Expanded(
-                    child: Center(
-                      child: Text('Teste'),
+                  Container(
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 80,
                     ),
+                    height: 180,
+                    child: Image.asset('assets/logos/logo.png'),
+                  ),
+                  SizedBox(
+                    height: 50,
+                    child: Image.asset('assets/logos/bookcase.png'),
                   ),
 
                   //Formulário

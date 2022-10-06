@@ -16,77 +16,85 @@ class SignInScreen extends StatelessWidget {
         child: SizedBox(
           width: size.width,
           height: size.height,
-          child: Column(children: [
-            const Expanded(
-              child: Center(
-                child: Text('Teste'),
+          child: SafeArea(
+            child: Column(children: [
+              Container(
+                margin: const EdgeInsets.symmetric(
+                  vertical: 60,
+                ),
+                height: 200,
+                child: Image.asset('assets/logos/logo.png'),
               ),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 32,
-                vertical: 40,
+              SizedBox(
+                height: 50,
+                child: Image.asset('assets/logos/bookcase.png'),
               ),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-              ),
-              child: Column(
-                children: [
-                  //Email
-                  const CustomTextField(
-                    label: 'E-mail',
-                  ),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 32,
+                  vertical: 40,
+                ),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                child: Column(
+                  children: [
+                    //Email
+                    const CustomTextField(
+                      label: 'E-mail',
+                    ),
 
-                  //Senha
-                  const CustomTextField(
-                    label: 'Senha',
-                    isSecret: true,
-                  ),
+                    //Senha
+                    const CustomTextField(
+                      label: 'Senha',
+                      isSecret: true,
+                    ),
 
-                  //Esqueci a senha
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: TextButton(
-                        onPressed: () {},
-                        child: const Text('Esqueceu a senha?')),
-                  ),
-
-                  //Botão de entrar
-                  SizedBox(
-                    height: 35,
-                    width: 180,
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25))),
-                        onPressed: () {
-                          Navigator.of(context)
-                              .pushReplacement(MaterialPageRoute(builder: (c) {
-                            return const BaseScreen();
-                          }));
-                        },
-                        child: const Text(
-                          'Entrar',
-                          style: TextStyle(fontSize: 16),
-                        )),
-                  ),
-
-                  //Criar conta
-                  Align(
-                      alignment: Alignment.center,
+                    //Esqueci a senha
+                    Align(
+                      alignment: Alignment.centerLeft,
                       child: TextButton(
+                          onPressed: () {},
+                          child: const Text('Esqueceu a senha?')),
+                    ),
+
+                    //Botão de entrar
+                    SizedBox(
+                      height: 35,
+                      width: 180,
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(25))),
                           onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(builder: (c) {
-                                return SignUpScreen();
-                              }),
-                            );
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(builder: (c) {
+                              return const BaseScreen();
+                            }));
                           },
-                          child: const Text('Criar Conta'))),
-                ],
-              ),
-            )
-          ]),
+                          child: const Text(
+                            'Entrar',
+                            style: TextStyle(fontSize: 16),
+                          )),
+                    ),
+
+                    //Criar conta
+                    Align(
+                        alignment: Alignment.center,
+                        child: TextButton(
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(builder: (c) {
+                                  return const SignUpScreen();
+                                }),
+                              );
+                            },
+                            child: const Text('Criar Conta'))),
+                  ],
+                ),
+              )
+            ]),
+          ),
         ),
       ),
     );
